@@ -1,12 +1,13 @@
-const { PRIORITY_BELOW_NORMAL } = require("constants");
 
-var box;
+var dog;
 
-//Write these two variables
+//Declare variable for database and reference & Position
 
 
 function preload(){
-    ludo=loadImage("background.jpg")
+    backdrop=loadImage("background.jpg");
+    dogimg=loadAnimation("dog1.png","dog2.png","dog3.png");
+    foodimg=loadImage("hotdog.png");
 }
 function setup(){
     
@@ -16,8 +17,13 @@ function setup(){
     //Initialise Databbase
    
 
-    box=createSprite(200,200,100,100);
-    box.shapeColor= "red";
+    dog=createSprite(200,200,100,100);
+
+    dog.addAnimation("running",dogimg);
+    dog.scale=0.5;
+    food=createSprite(450,450);
+    food.addImage(foodimg);
+    food.scale=0.5;
 
     // .ref() and .on
     
@@ -25,12 +31,14 @@ function setup(){
 }
 
 function draw(){
-    background(ludo);
+    background(backdrop);
+    
     if(keyDown(LEFT_ARROW)){
         changePosition(-1,0);
     }
     else if(keyDown(RIGHT_ARROW)){
         changePosition(1,0);
+       
     }
     else if(keyDown(UP_ARROW)){
         changePosition(0,-1);
@@ -42,13 +50,12 @@ function draw(){
 }
 
 function changePosition(x,y){
-    box.x = box.x + x;
-    box.y = box.y + y;
+    dog.x = dog.x+x;
+    dog.y = dog.y+y;
 }
 
 
 //Function read position
 function readposition(data){
-
-    
+   
 }
